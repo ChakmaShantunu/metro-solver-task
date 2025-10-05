@@ -12,6 +12,7 @@ import ContactSection from "./components/ContactSection";
 import FaqSection from "./components/FaqSection";
 import WorldMapContact from "./components/WorldMapContact";
 import NewsletterBanner from "./components/NewsletterBanner";
+import BrandTiles from "./components/BrandTiles";
 
 export default function Home() {
   return (
@@ -21,7 +22,9 @@ export default function Home() {
       <div className="max-w-11/12 mx-auto">
         <Hero></Hero>
       </div>
+      <BrandTiles></BrandTiles>
       <OurServices></OurServices>
+
       <LatestWork></LatestWork>
       <WhyChoose></WhyChoose>
       <HowItWorks></HowItWorks>
