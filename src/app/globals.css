@@ -4,10 +4,9 @@
 
 
 
-.poppins {
-  font-family: "Poppins", sans-serif;
-}
+
 
 body {
   color: white;
+  font-family: "Poppins", sans-serif;
 }
