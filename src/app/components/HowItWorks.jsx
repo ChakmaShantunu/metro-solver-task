@@ -3,54 +3,62 @@ import React from "react";
 import { FaPhone, FaBox, FaShieldAlt, FaFileAlt, FaCogs, FaWrench } from "react-icons/fa";
 
 const steps = [
-    { title: "Delivery and Support", icon: <FaBox />, position: "top-left", number: "01" },
-    { title: "Book a Call", icon: <FaPhone />, position: "top-right", number: "02" },
-    { title: "Quality Assurance", icon: <FaShieldAlt />, position: "middle-left", number: "03" },
-    { title: "Requirement Analysis", icon: <FaFileAlt />, position: "middle-right", number: "04" },
-    { title: "Implement & Develop", icon: <FaCogs />, position: "bottom-left", number: "05" },
-    { title: "Service Customisation", icon: <FaWrench />, position: "bottom-right", number: "06" },
+    { title: "Delivery and Support", icon: <FaBox />, number: "01" },
+    { title: "Book a Call", icon: <FaPhone />, number: "02" },
+    { title: "Quality Assurance", icon: <FaShieldAlt />, number: "03" },
+    { title: "Requirement Analysis", icon: <FaFileAlt />, number: "04" },
+    { title: "Implement & Develop", icon: <FaCogs />, number: "05" },
+    { title: "Service Customisation", icon: <FaWrench />, number: "06" },
 ];
 
 export default function HowItWorks() {
-    const positions = {
-        "top-left": "top-0 left-0",
-        "top-right": "top-0 right-0",
-        "middle-left": "top-1/2 left-0 -translate-y-1/2",
-        "middle-right": "top-1/2 right-0 -translate-y-1/2",
-        "bottom-left": "bottom-0 left-0",
-        "bottom-right": "bottom-0 right-0",
-    };
-
     return (
-        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] text-white px-4 py-12">
-            <div className="relative w-full max-w-6xl h-[600px]">
-                {/* Center Title */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                    <div className="relative flex items-center justify-center h-[300px] md:h-[400px]">
-                        {/* Outer Circle */}
-                        <div className="absolute w-[280px] h-[280px] md:w-[360px] md:h-[360px] rounded-full border-4 border-purple-500 opacity-30 animate-pulse"></div>
+        <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] text-white px-4 py-12">
+            {/* Main Container */}
+            <div className="relative w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-12">
 
-                        {/* Inner Circle */}
-                        <div className="absolute w-[180px] h-[180px] md:w-[240px] md:h-[240px] rounded-full border-4 border-purple-700 flex items-center justify-center bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] shadow-lg">
-                            <h2 className="text-xl md:text-3xl font-bold text-white text-center">How it Works?</h2>
+                {/* Left Steps */}
+                <div className="flex flex-col gap-6 md:w-1/3">
+                    {steps.slice(0, 3).map((step, index) => (
+                        <div
+                            key={index}
+                            className="bg-white/10 backdrop-blur-md border border-purple-500 rounded-xl p-6 flex flex-col items-center gap-3 text-center"
+                        >
+                            <div className="text-3xl text-purple-300">{step.icon}</div>
+                            <h3 className="text-base md:text-lg font-semibold">{step.title}</h3>
+                            <span className="text-xs text-purple-400 font-bold">{step.number}</span>
                         </div>
-                    </div>
-
-                    <p className="text-sm text-gray-300">Our process is simple, structured, and built for results.</p>
+                    ))}
                 </div>
 
-                {/* Steps */}
-                {steps.map((step, index) => (
-                    <div
-                        key={index}
-                        className={`absolute ${positions[step.position]} p-4 w-40 md:w-48 bg-white/10 backdrop-blur-md rounded-xl border border-purple-500 text-center flex flex-col items-center gap-2`}
-                    >
-                        <div className="text-2xl text-purple-300">{step.icon}</div>
-                        <h3 className="text-sm md:text-base font-semibold">{step.title}</h3>
-                        <span className="text-xs text-purple-400 font-bold">{step.number}</span>
+                {/* Center Circle */}
+                <div className="relative w-56 h-56 md:w-72 md:h-72 flex items-center justify-center">
+                    <div className="absolute w-full h-full rounded-full border-4 border-purple-500 opacity-30 animate-pulse"></div>
+                    <div className="absolute w-2/3 h-2/3 md:w-3/4 md:h-3/4 rounded-full border-4 border-purple-700 flex items-center justify-center bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] shadow-lg">
+                        <h2 className="text-lg md:text-2xl font-bold text-white text-center">How it Works?</h2>
                     </div>
-                ))}
+                </div>
+
+                {/* Right Steps */}
+                <div className="flex flex-col gap-6 md:w-1/3 mt-6 md:mt-0">
+                    {steps.slice(3, 6).map((step, index) => (
+                        <div
+                            key={index}
+                            className="bg-white/10 backdrop-blur-md border border-purple-500 rounded-xl p-6 flex flex-col items-center gap-3 text-center"
+                        >
+                            <div className="text-3xl text-purple-300">{step.icon}</div>
+                            <h3 className="text-base md:text-lg font-semibold">{step.title}</h3>
+                            <span className="text-xs text-purple-400 font-bold">{step.number}</span>
+                        </div>
+                    ))}
+                </div>
+
             </div>
+
+            {/* Optional Subtitle */}
+            <p className="text-sm md:text-base text-gray-300 mt-12 text-center">
+                Our process is simple, structured, and built for results.
+            </p>
         </section>
     );
 }

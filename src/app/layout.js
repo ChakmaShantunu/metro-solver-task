@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PromoMarquee from "./components/PromoMarquee";
+import FooterSection from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,9 @@ export default function RootLayout({ children }) {
         <main>
           {children}
         </main>
-
+        <footer>
+          <FooterSection></FooterSection>
+        </footer>
       </body>
     </html>
   );
