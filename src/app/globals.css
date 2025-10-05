@@ -2,11 +2,27 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
-
-
-
 body {
   color: white;
   font-family: "Poppins", sans-serif;
+  background: "linear-gradient(160deg, #0D0D1A, #1B1B31, #251F40, #361A67, #412178)";
+}
+
+/* globals.css */
+
+/* Marquee Animation Keyframes */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Marquee Class */
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
 }

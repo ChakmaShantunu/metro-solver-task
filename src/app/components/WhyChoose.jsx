@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function WhyChoose() {
     return (
-        <div className='max-w-11/12 mx-auto py-48'>
+        <div className='max-w-11/12 py-48 mx-auto'>
             <div className='flex justify-between items-center'>
                 <div className='space-y-8'>
                     <h1 className='font-bold text-5xl'>Why You Choose Metro Solver?</h1>
@@ -10,16 +10,16 @@ export default function WhyChoose() {
                     <button className="btn rounded-2xl w-fit">Book Now</button>
                 </div>
                 <div className='relative -top-12'>
-                    <div className='absolute right-56 bottom-12 -rotate-6'>
+                    <div className='absolute right-12 bottom-12 -rotate-6'>
                         <p className='bg-amber-400 p-4 w-sm text-center rounded-xl'>Cancel Anytime</p>
                     </div>
-                    <div className='absolute right-56 top-4 rotate-6'>
+                    <div className='absolute right-12 top-4 rotate-6'>
                         <p className='bg-amber-400 p-4 w-sm text-center rounded-xl'>24/7 Customer Service</p>
                     </div>
-                    <div className='absolute right-56 top-24 -rotate-1'>
+                    <div className='absolute right-12 top-24 -rotate-1'>
                         <p className='bg-amber-400 p-4 w-sm text-center rounded-xl'>Refers & Earn</p>
                     </div>
-                    <div className='absolute right-56 top-48'>
+                    <div className='absolute right-12 top-48'>
                         <p className='bg-amber-400 p-4 w-sm text-center rounded-xl'>Money Back Guarantee</p>
                     </div>
                     
