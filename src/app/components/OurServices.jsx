@@ -1,4 +1,6 @@
+"use client";
 import React from 'react';
+import { motion } from "framer-motion";
 
 export default function OurServices() {
     const data = [
@@ -19,8 +21,30 @@ export default function OurServices() {
         { logo: "https://img.icons8.com/ios-filled/50/ffffff/search.png", title: "SEO", description: "We are constantly growing or learning and improving. Enter your personal real estate sanctuary, where finding the ideal home is.", readMore: "/services/seo" }
     ];
 
+    // Framer Motion variants
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const item = {
+        hidden: { opacity: 0, y: 30 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    };
+
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+        >
             {/* Title */}
             <div className="text-center my-12 space-y-4">
                 <h1 className='text-4xl sm:text-5xl font-bold'>Our Services</h1>
@@ -32,7 +56,7 @@ export default function OurServices() {
             {/* Services Grid */}
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
                 {data.map((singleData, index) => (
-                    <div key={index} className="card bg-gray-900 text-primary-content rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <motion.div key={index} variants={item} className="card bg-gray-900 text-primary-content rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
                         <div className="card-body p-6 flex flex-col gap-4">
                             <img src={singleData.logo} alt={singleData.title} className='w-10 h-10' />
                             <h2 className="card-title text-lg sm:text-xl font-semibold">{singleData.title}</h2>
@@ -44,9 +68,9 @@ export default function OurServices() {
                                 Read More <span>→</span>
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 }

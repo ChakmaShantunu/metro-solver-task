@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-
+import { motion } from "framer-motion";
 
 const cards = [
     {
@@ -34,26 +33,59 @@ const cards = [
 ];
 
 export default function SuccessSection() {
+    const container = {
+        hidden: {},
+        show: {
+            transition: { staggerChildren: 0.15 }
+        }
+    };
+
+    const item = {
+        hidden: { opacity: 0, y: 20, scale: 0.95 },
+        show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } }
+    };
+
     return (
         <section className="bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] text-white py-16 px-4">
             <div className="max-w-7xl mx-auto text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">The Success Stories, Case Studies & Blog</h2>
-                <p className="text-gray-300">Explore how Metro Solver is transforming businesses through innovation and performance.</p>
+                <motion.h2
+                    className="text-4xl md:text-5xl font-bold mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    The Success Stories, Case Studies & Blog
+                </motion.h2>
+                <motion.p
+                    className="text-gray-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                >
+                    Explore how Metro Solver is transforming businesses through innovation and performance.
+                </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+            >
                 {cards.map((card, index) => (
-                    <div
+                    <motion.div
                         key={index}
-                        className={`bg-white/10 backdrop-blur-md rounded-xl border ${card.highlighted ? "border-purple-500 shadow-xl scale-[1.03]" : "border-gray-700"
-                            } p-6 transition-all duration-300`}
+                        className={`bg-white/10 backdrop-blur-md rounded-xl border ${card.highlighted ? "border-purple-500 shadow-xl" : "border-gray-700"} p-6 transition-all duration-300`}
+                        variants={item}
                     >
                         <img
                             src="https://i.pravatar.cc/500?img=10"
                             alt="Sample"
-                            className="rounded-lg w-full h-auto"
+                            className="rounded-lg w-full h-auto mb-4"
                         />
-
                         <h3 className="text-xl font-semibold text-purple-300 mb-2">{card.category}</h3>
                         <h4 className="text-lg font-bold mb-2">{card.title}</h4>
                         <p className="text-sm text-gray-300 mb-4">{card.description}</p>
@@ -63,11 +95,16 @@ export default function SuccessSection() {
                             <p>📉 {card.cpa}</p>
                         </div>
                         {card.highlighted && (
-                            <button className="btn btn-primary rounded-full mt-2">View More</button>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                className="btn btn-primary rounded-full mt-2"
+                            >
+                                View More
+                            </motion.button>
                         )}
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }

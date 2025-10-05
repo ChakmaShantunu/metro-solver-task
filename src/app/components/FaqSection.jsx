@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 const faqItems = [
     "Web & Software Development",
@@ -13,30 +14,51 @@ const faqItems = [
 ];
 
 export default function FaqSection() {
+    const containerVariants = {
+        hidden: {},
+        show: { transition: { staggerChildren: 0.1 } }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+    };
+
     return (
-        <section className="bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] text-white py-20 px-6">
+        <motion.section
+            className="bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] text-white py-20 px-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+        >
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
                 {/* Left Column */}
-                <div>
+                <motion.div variants={itemVariants}>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
                         Got Questions? <br className="md:hidden" /> We've got Answers
                     </h2>
 
                     <div className="mt-8">
                         <h3 className="text-xl font-semibold text-yellow-400 mb-4">Digital Marketing</h3>
-                        <ul className="space-y-3 pl-4">
+                        <motion.ul className="space-y-3 pl-4" variants={containerVariants}>
                             {faqItems.map((item, index) => (
-                                <li key={index} className="flex items-start gap-2 text-white">
+                                <motion.li
+                                    key={index}
+                                    className="flex items-start gap-2 text-white"
+                                    variants={itemVariants}
+                                >
                                     <span className="mt-1 w-2 h-2 rounded-full bg-white flex-shrink-0"></span>
                                     <span>{item}</span>
-                                </li>
+                                </motion.li>
                             ))}
-                        </ul>
+                        </motion.ul>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Right Column - Accordion */}
-                <div className="space-y-4">
+                <motion.div className="space-y-4" variants={itemVariants}>
                     {[
                         {
                             question: "What services do you offer in digital marketing?",
@@ -86,8 +108,8 @@ export default function FaqSection() {
                             </div>
                         </div>
                     ))}
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </motion.section>
     );
 }

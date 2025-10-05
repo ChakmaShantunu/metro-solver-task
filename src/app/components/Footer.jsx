@@ -1,10 +1,22 @@
 "use client";
 import React from "react";
-import { FaPhone, FaEnvelope, FaGlobe } from "react-icons/fa";
+import { FaPhone, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function FooterSection() {
+    const containerVariants = {
+        hidden: { opacity: 0, y: 30 },
+        show: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
+    };
+
     return (
-        <footer className="bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] text-white pt-16 pb-8 px-6">
+        <motion.footer
+            className="bg-gradient-to-br from-[#361A67] via-[#1B1B31] to-[#412178] text-white pt-16 pb-8 px-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+        >
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
                 {/* Contact Info */}
                 <div className="space-y-4">
@@ -90,12 +102,11 @@ export default function FooterSection() {
             {/* Horizontal line */}
             <hr className="w-full border-t border-gray-500/30 mt-6" />
 
-
             {/* Footer Note */}
-            <div className="mt-12 text-center text-sm text-gray-400 space-y-1 flex justify-between items-center max-w-7xl mx-auto">
+            <div className="mt-12 text-center text-sm text-gray-400 space-y-1 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
                 <p>© Metro Solver. All Rights Reserved 2024</p>
                 <p>Metro Solver Ltd is incorporated in England. Website Registration No: 12751899</p>
             </div>
-        </footer>
+        </motion.footer>
     );
 }
