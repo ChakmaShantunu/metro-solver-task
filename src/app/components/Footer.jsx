@@ -105,6 +105,10 @@ export default function FooterSection() {
             {/* Footer Note */}
             <div className="mt-12 text-center text-sm text-gray-400 space-y-1 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
                 <p>© Metro Solver. All Rights Reserved 2024</p>
+                <button className="btn btn-primary rounded-2xl" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                    Back to Top
+                </button>
+
                 <p>Metro Solver Ltd is incorporated in England. Website Registration No: 12751899</p>
             </div>
         </motion.footer>
